@@ -1,19 +1,32 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json",
-      "author": "typicode"
+      "name":"Renzo Veliz",
+      "telefone":"+55(92)000000000"
     }
   ],
-  "comments": [
+  "contacts": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "idUser":1,
+      "name":"Ruan Linhares Vital",
+      "telefone":"+55(92)000000000",
+      "email":"ruanlinares123@exemplo.com"
+    },
+    {
+      "id": 2,
+      "idUser":1,
+      "name":"Shayan Mesquita Fontinha",
+      "telefone":"+55(92)000000000",
+      "email":"shayan123@exemplo.com"
+    },
+    {
+      "id": 3,
+      "idUser":1,
+      "name":"Elisama Camacho Maranhão",
+      "telefone":"+55(92)000000000",
+      "email":"elisama123@exemplo.com"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
