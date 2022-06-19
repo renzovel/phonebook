@@ -3,6 +3,10 @@
   --minWidthCont:250px;
   --maxWidthCont:350px;
   --widthCont:auto;
+  --fontFamilyOne: "Product Sans",Arial,sans-serif;
+}
+*{
+  font-family: var(--fontFamilyOne);
 }
 .Main{
   position: relative;
