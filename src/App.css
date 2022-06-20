@@ -38,7 +38,8 @@
   max-width: var(--maxWidthCont);
   overflow-x: hidden;
 }
-.ContainerContact, .search-container{
+.ContainerContact, 
+.searchContainer{
   height: 100%;
   overflow: auto;
   width: 100%;
@@ -53,10 +54,23 @@
   margin-left: 5px;
   max-width: 60px;
   max-height: 60px;
+  border-radius: 100%;
 }
-
-.search-container{
-
+.logo-container span{
+  font-size: 24px;
+  margin-left: 15px;
+}
+.searchContainer{
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.searchContainer-input,
+.searchContainer-input .Search{
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 @media (prefers-reduced-motion: no-preference) {
