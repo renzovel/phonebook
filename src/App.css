@@ -14,7 +14,6 @@
 .Header {
   width: 100%;
   height: var(--mtopHeader);
-  background-color: antiquewhite;
   position: fixed;
   display: flex;
   gap: 1px;
@@ -25,7 +24,6 @@
   left: 0;
   right: 0;
   height: calc(100% - var(--mtopHeader));
-  background-color: rgb(225, 220, 245);
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -33,7 +31,6 @@
   gap: 1px;
 }
 .MenuLeft, .logo-container{
-  background-color: blueviolet;
   height: 100%;
   overflow: auto;
   width: var(--widthCont);
@@ -42,15 +39,22 @@
   overflow-x: hidden;
 }
 .ContainerContact, .search-container{
-  background-color: rgb(120, 91, 148);
   height: 100%;
   overflow: auto;
   width: 100%;
   overflow-x: hidden;
 }
 .logo-container{
-  
+  overflow: hidden;
+  max-width: 60px;
 }
+.logo-container img{
+  margin-top: 5px;
+  margin-left: 5px;
+  max-width: 60px;
+  max-height: 60px;
+}
+
 .search-container{
 
 }
