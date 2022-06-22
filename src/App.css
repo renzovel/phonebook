@@ -45,6 +45,9 @@
   width: 100%;
   overflow-x: hidden;
 }
+.ContainerContact{
+  box-shadow: rgb(102, 78, 207) 0px px 0px;
+}
 .logo-container{
   overflow: hidden;
   max-width: 60px;
@@ -64,6 +67,7 @@
   overflow: hidden;
   display: inline-flex;
   justify-content: space-between;
+  box-shadow: #eee 0px 0px 30px;
 }
 .searchContainer-input,
 .searchContainer-input .Search{
