@@ -105,12 +105,18 @@
 .row-table div:nth-child(1) > img{
   width: 64px;
   height: 64px;
+  border-radius: 5px;
+
 }
 .row-table div:last-child{
   max-width: 100px;
   min-width: 80px;
   text-align: right;
   padding-right: 10px;
+}
+.alert-cadastra{
+  line-height: 100px;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
