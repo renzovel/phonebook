@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Form} from 'react-bootstrap';
-import Get from "../../api/Get";
+import {URLs, GET} from "../../api/Api";
 import Logo from '../../asset/images/logo192.png';
 
 
@@ -11,9 +11,9 @@ function Header(){
             marginRight:5
         }
     }
-    const [LogoUser, setLogoUser] = useState("https://ui-avatars.com/api/?background=227aee&name=Renzo+Veliz&color=FFFF");
+    const [LogoUser, setLogoUser] = useState(URLs.defaultUser);
     useEffect(()=>{
-        const GitHub=Get('https://api.github.com/users/renzovel');
+        const GitHub=GET(URLs.user);
         GitHub.then((res)=>{
             setLogoUser(res.avatar_url);
         })
@@ -33,6 +33,7 @@ function Header(){
                         aria-label="search"
                         aria-describedby="search"
                         className={'Search'}
+                        onChange={(e)=>{console.log(e.target.value)}}
                      />
                 </div>
                 <div className='logo-container' style={style.logoContainer}>
