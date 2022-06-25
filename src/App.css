@@ -92,6 +92,10 @@
   margin-top: 10px;
   border-bottom: 1px solid #eee;
 }
+.row-table:hover{
+  background-color: #f1f6fb;
+  cursor: pointer;
+}
 .row-table div{
   text-align: left;
   flex-grow: 1;

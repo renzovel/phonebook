@@ -25,9 +25,10 @@ function ContainerContact(){
           "email":"elisama123@exemplo.com"
         }
     ]);
-
     const listarContacts = (id)=>{
-        setList([]);
+        setList((list)=>{
+          return list.filter(row=>row.id!==id);
+        });
     }
     return(
         <div className='ContainerContact'>
