@@ -7,7 +7,6 @@ function App() {
     setValue(()=>{
       return value;
     })
-    console.log(value);
   };
   return (
     <div className='Main'>

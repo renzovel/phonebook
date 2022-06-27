@@ -10,6 +10,8 @@ function ContainerContact(props){
       resquest.then((data)=>{
         if(data.length>0){
           setList(data);
+        }else{
+          setList([]);
         }
       });
     }
@@ -40,8 +42,8 @@ function ContainerContact(props){
       return resquest;
     }
 
-    const editContacts=(id)=>{
-      console.log(id);
+    const editContacts=(data)=>{
+      console.log(data);
     }
 
 

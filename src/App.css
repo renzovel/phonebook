@@ -138,6 +138,11 @@
   color: #227aee;
   cursor: pointer;
 }
+.icon-show-contact{
+  border-radius: 100%;
+  margin-bottom: 20px;
+  box-shadow: #e5d6d6 1px 1px 30px;
+}
 
 
 

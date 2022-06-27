@@ -1,7 +1,6 @@
 function MenuLeft(){
     return(
         <aside className='MenuLeft'>
-                        dsfsdfdsf
         </aside>
     )
 }
