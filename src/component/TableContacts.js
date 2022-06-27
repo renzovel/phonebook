@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import MyVerticallyCenteredModal from './bootstrap/Modal';
+import Formulario from './Formulario';
 
 class Contacts extends Component{
     constructor(props){
@@ -7,12 +8,22 @@ class Contacts extends Component{
         this.state={
             modalDeleteShow:false,
             modalReadShow:false,
-            modalData:{}
+            modalUpdateShow:false,
+            modalData:{},
+            form:{
+                id:'',
+                name:'',
+                phone:'',
+                email:''
+            }
         }
         this.modalDeleteShow=this.modalDeleteShow.bind(this);
         this.modalDeleteHiden=this.modalDeleteHiden.bind(this);
         this.modalReadShow=this.modalReadShow.bind(this);
         this.modalReadHiden=this.modalReadHiden.bind(this);
+        this.modalUpdateShow=this.modalUpdateShow.bind(this);
+        this.modalUpdateHiden=this.modalUpdateHiden.bind(this);
+        this.updateForm=this.updateForm.bind(this);
     }
 
     modalDeleteShow(data){
@@ -32,17 +43,35 @@ class Contacts extends Component{
     modalReadHiden(){
         this.setState({modalReadShow:false});
     }
+    modalUpdateShow(data){
+        this.setState({modalUpdateShow:true, modalData:data, form:{
+            id:data.id,
+            name:data.name,
+            phone:data.phone,
+            email:data.email
+        }});
+    }
+    modalUpdateHiden(save){
+        if(save){
+            const {editContacts} =this.props;
+            editContacts(this.state.form);
+        }
+        this.setState({modalUpdateShow:false});
+    }
+    updateForm(form){
+        this.setState({form:form});
+    }
     
     render(){
         const _this=this;
-        const {editContacts, list} =_this.props;
+        const {list} =_this.props;
         return(
             <>
             <MyVerticallyCenteredModal
                 type={"DELETE"}
                 title={"Apagar"}
                 subtitle={"Você realmente deseja excluir?"}
-                message={<p>{`Você excluirá o contato de "${this.state.modalData.name}" clica no botão "Concordo" se você realmente deseja excluí-lo.`}</p>}
+                message={<p>{`Você excluirá o contato de "`}<strong>{this.state.modalData.name}</strong>{`" clica no botão `}<strong>{`"Concordo"`}</strong>{` se você realmente deseja excluí-lo.`}</p>}
                 show={this.state.modalDeleteShow}
                 onHide={this.modalDeleteHiden}
             />
@@ -60,6 +89,14 @@ class Contacts extends Component{
                 }
                 show={this.state.modalReadShow}
                 onHide={this.modalReadHiden}
+            />
+            <MyVerticallyCenteredModal
+                type={"UPDATE"}
+                title={"Atualizar"}
+                subtitle={""}
+                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                show={this.state.modalUpdateShow}
+                onHide={this.modalUpdateHiden}
             />
             <div className="container-table">
             {list.length>0?list.map(function (data){
@@ -79,7 +116,7 @@ class Contacts extends Component{
                     </div>
                     <div className='content-icon'>
                         <div className='icon-editar'>
-                            <svg onClick={(e)=>{editContacts(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
+                            <svg onClick={(e)=>{_this.modalUpdateShow(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
                                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                             </svg>
                         </div>

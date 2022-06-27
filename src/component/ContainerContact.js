@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {URLs, GET, DELETE} from "../api/Api";
+import {URLs, GET, DELETE, PUT} from "../api/Api";
 import Contacts from "./TableContacts";
 
 function ContainerContact(props){
@@ -43,11 +43,13 @@ function ContainerContact(props){
     }
 
     const editContacts=(data)=>{
-      console.log(data);
+      const newResquest= PUT(URLs.putContacts+data.id, data);
+      newResquest.then((data)=>{
+        console.log(data);
+        loadContacts();
+      });
     }
 
-
-    
     return(
         <div className='ContainerContact'>
             <Contacts editContacts={editContacts} deleteContacts={deleteContacts} list={list} />
