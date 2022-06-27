@@ -4,7 +4,8 @@ import {URLs, GET} from "../../api/Api";
 import Logo from '../../asset/images/logo192.png';
 
 
-function Header(){
+function Header(props){
+    const {search} = props; 
     const style={
         logoContainer:{
             textAlign:'right',
@@ -17,7 +18,8 @@ function Header(){
         GitHub.then((res)=>{
             setLogoUser(res.avatar_url);
         })
-    },[]);
+    },[props]);
+    
     return (
         <header className='Header'>
             <div className='logo-container'>
@@ -33,7 +35,7 @@ function Header(){
                         aria-label="search"
                         aria-describedby="search"
                         className={'Search'}
-                        onChange={(e)=>{console.log(e.target.value)}}
+                        onChange={(e)=>{search(e.target.value)}}
                      />
                 </div>
                 <div className='logo-container' style={style.logoContainer}>

@@ -1,10 +1,18 @@
+import React,{useState} from 'react';
 import Header from './Header';
 import Body from './Body';
 function App() {
+  const [value, setValue]=useState('');
+  const buscar=(value)=>{
+    setValue(()=>{
+      return value;
+    })
+    console.log(value);
+  };
   return (
     <div className='Main'>
-        <Header />
-        <Body />
+        <Header search={buscar} />
+        <Body search={value}  />
     </div>
   );
 }
