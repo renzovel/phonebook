@@ -22,6 +22,8 @@ function ContainerContact(props){
         resquest.then((data)=>{
           if(data.length>0){
             setList(data);
+          }else{
+            setList([]);
           }
         });
       }else{

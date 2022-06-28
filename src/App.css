@@ -68,10 +68,24 @@
 }
 .searchContainer-input,
 .searchContainer-input .Search{
-  width: 90%;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   display: flex;
+}
+.searchContainer-input{
+  margin-left: 4px;
+}
+.searchContainer-input .form-floating{
+  width: inherit;
+}
+#search{
+  border: none; 
+  border-bottom: 1px solid #ccc;
+  border-radius: 0px;
+}
+#search:focus{
+  border-radius: 1.5px !important;
 }
 .container-table{
   width: 100%;
@@ -156,17 +170,22 @@
   height: inherit;
 }
 .btnInsertContact span{
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 15px;
-  bottom: 0;
-  right: 0;
-  font-size: 70px;
-  width: 70px;
-  height: 70px;
-  color: #fff;
-  line-height: 70px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    font-size: 100px;
+    width: 70px;
+    height: 70px;
+    color: #fff;
+    line-height: 70px;
+}
+.btnInsertContact:hover{
+  transform: scale(1.1);
+  box-shadow: #bfadad 0px 0px 25px;
 }
 
 

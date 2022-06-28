@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Form} from 'react-bootstrap';
+import {Form, FloatingLabel} from 'react-bootstrap';
 import {URLs, GET} from "../../api/Api";
 import Logo from '../../asset/images/logo192.png';
 
@@ -28,15 +28,17 @@ function Header(props){
             </div>
             <div className='searchContainer'>
                 <div className='searchContainer-input'>
-                    <Form.Control
-                        id='search'
-                        name='search'
-                        placeholder="Buscar contato..."
-                        aria-label="search"
-                        aria-describedby="search"
-                        className={'Search'}
-                        onChange={(e)=>{search(e.target.value)}}
-                     />
+                    <FloatingLabel controlId="search" label="Buscar contato...">
+                        <Form.Control
+                            name='search'
+                            placeholder="Buscar contato..."
+                            aria-label="search"
+                            aria-describedby="search"
+                            className={'Search'}
+                            onChange={(e)=>{search(e.target.value)}}
+                            size={50}
+                        />
+                    </FloatingLabel>
                 </div>
                 <div className='logo-container' style={style.logoContainer}>
                     <img src={LogoUser} alt='Phone Book' title='Phone Book'/>
