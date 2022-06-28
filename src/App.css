@@ -203,6 +203,13 @@
   border-bottom-color: green;
   color: purple;
 }
+.btn-criar-contacts:hover,
+.btn-criar-contacts:active,
+.btn-criar-contacts:focus{
+  background-color: transparent;
+  color: purple;
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {

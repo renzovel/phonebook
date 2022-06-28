@@ -9,7 +9,7 @@ class Contacts extends Component{
             modalDeleteShow:false,
             modalReadShow:false,
             modalUpdateShow:false,
-            modalCreateShow:true,
+            modalCreateShow:false,
             modalData:{},
             form:{
                 id:'',
