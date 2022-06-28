@@ -187,6 +187,19 @@
   transform: scale(1.1);
   box-shadow: #bfadad 0px 0px 25px;
 }
+.btn-criar-contacts{
+  margin: auto;
+  margin-top: 10px;
+  width: 90%;
+  background-color: transparent;
+  border-width: 3px;
+  border-left-color: #d3d30f;
+  border-top-color: blue;
+  border-right-color: red;
+  border-bottom-color: green;
+  color: purple;
+
+}
 
 
 @media (prefers-reduced-motion: no-preference) {
