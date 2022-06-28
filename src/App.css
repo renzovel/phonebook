@@ -45,9 +45,6 @@
   width: 100%;
   overflow-x: hidden;
 }
-.ContainerContact{
-  box-shadow: rgb(102, 78, 207) 0px px 0px;
-}
 .logo-container{
   overflow: hidden;
   max-width: 60px;
@@ -143,7 +140,34 @@
   margin-bottom: 20px;
   box-shadow: #e5d6d6 1px 1px 30px;
 }
-
+.btnInsertContact{
+  position: absolute;
+  box-shadow: #ccc 0px 0px 25px;
+  right: 20px;
+  bottom: 10px;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 100%;
+}
+.btnInsertContact img{
+  width: inherit;
+  height: inherit;
+}
+.btnInsertContact span{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  bottom: 0;
+  right: 0;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+  color: #fff;
+  line-height: 70px;
+}
 
 
 @media (prefers-reduced-motion: no-preference) {

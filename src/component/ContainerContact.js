@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {URLs, GET, DELETE, PUT} from "../api/Api";
 import Contacts from "./TableContacts";
+import  ImageBoton  from "../asset/images/boton_da_diversidade.png";
 
 function ContainerContact(props){
     const {search} = props;
@@ -53,6 +54,10 @@ function ContainerContact(props){
     return(
         <div className='ContainerContact'>
             <Contacts editContacts={editContacts} deleteContacts={deleteContacts} list={list} />
+            <div className='btnInsertContact'>
+              <img src={ImageBoton} alt="Criar novo contato." title="Criar novo contato." />
+              <span>+</span>
+            </div>
         </div>
     )
 }
