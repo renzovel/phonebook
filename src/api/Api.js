@@ -19,8 +19,13 @@ async function GET(url) {
     return await connect({ url: url, options:{method: 'GET' }});
 }
 
-async function POST(url) {
-    return await connect({ url: url, options:{method: 'POST' }});
+async function POST(url, dataObject) {
+    return await connect({ url: url, options:{method: 'POST', 
+    headers: { 
+        'Accept':'application/json',
+        'Content-Type': 'application/json' 
+    }, 
+    body:JSON.stringify(dataObject)}}); 
 }
 
 async function DELETE(url) {
@@ -28,7 +33,6 @@ async function DELETE(url) {
 }
 
 async function PUT(url, dataObject) {
-    console.log(JSON.stringify(dataObject));
     return await connect({ url: url, options:{method: 'PUT', 
     headers: { 
         'Accept':'application/json',

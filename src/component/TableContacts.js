@@ -9,6 +9,7 @@ class Contacts extends Component{
             modalDeleteShow:false,
             modalReadShow:false,
             modalUpdateShow:false,
+            modalCreateShow:true,
             modalData:{},
             form:{
                 id:'',
@@ -24,6 +25,8 @@ class Contacts extends Component{
         this.modalUpdateShow=this.modalUpdateShow.bind(this);
         this.modalUpdateHiden=this.modalUpdateHiden.bind(this);
         this.updateForm=this.updateForm.bind(this);
+        this.modalCreateShow= this.modalCreateShow.bind(this);
+        this.modalCreateHiden=this.modalCreateHiden.bind(this);
     }
 
     modalDeleteShow(data){
@@ -61,6 +64,23 @@ class Contacts extends Component{
     updateForm(form){
         this.setState({form:form});
     }
+    modalCreateShow(){
+        this.setState({modalCreateShow:true, modalData:{}, form:{
+            id:'',
+            name:'',
+            phone:'',
+            email:''
+        }});
+    }
+    modalCreateHiden(save){
+        if(save){
+            const {createContacts} =this.props;
+            const newContact= this.state.form;
+            delete newContact.id;
+            createContacts(newContact);
+        } 
+        this.setState({modalCreateShow:false});
+    }
     
     render(){
         const _this=this;
@@ -97,6 +117,14 @@ class Contacts extends Component{
                 message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
                 show={this.state.modalUpdateShow}
                 onHide={this.modalUpdateHiden}
+            />
+            <MyVerticallyCenteredModal
+                type={"CREATE"}
+                title={"Criar contato"}
+                subtitle={""}
+                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                show={this.state.modalCreateShow}
+                onHide={this.modalCreateHiden}
             />
             <div className="container-table">
             {list.length>0?list.map(function (data){
