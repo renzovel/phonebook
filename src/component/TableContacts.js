@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import MyVerticallyCenteredModal from './bootstrap/Modal';
 import Formulario from './Formulario';
 
-class Contacts extends Component{
+class TableContacts extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -164,7 +164,7 @@ class Contacts extends Component{
 
 }
 
-export default Contacts;
+export default TableContacts;
 
 
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { URLs, GET, DELETE, PUT, POST } from "../api/Api";
-import Contacts from "./TableContacts";
+import TableContacts from "./TableContacts";
 import ImageBoton from "../asset/images/boton_da_diversidade.png";
+import MenuLeft from './MenuLeft';
 
 
 
@@ -64,18 +65,21 @@ function ContainerContact(props) {
   }
 
   return (
-    <div className='ContainerContact'>
-      <Contacts 
-        ref={refContacts} 
-        editContacts={editContacts} 
-        deleteContacts={deleteContacts} 
-        createContacts={createContact} 
-        list={list} />
-      <div className='btnInsertContact'>
-        <img src={ImageBoton} alt="Criar novo contato." title="Criar novo contato." />
-        <span onClick={() => refContacts.current.modalCreateShow()}>+</span>
+    <>
+      <MenuLeft createContactShow={() => refContacts.current.modalCreateShow()} /> 
+      <div className='ContainerContact'>
+        <TableContacts 
+          ref={refContacts} 
+          editContacts={editContacts} 
+          deleteContacts={deleteContacts} 
+          createContacts={createContact} 
+          list={list} />
+        <div className='btnInsertContact'>
+          <img src={ImageBoton} alt="Criar novo contato." title="Criar novo contato." />
+          <span onClick={() => refContacts.current.modalCreateShow()}>+</span>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default ContainerContact;
