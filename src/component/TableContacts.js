@@ -17,6 +17,11 @@ class TableContacts extends Component{
                 phone:'',
                 email:''
             }
+            ,formValidate:{
+                name:null,
+                phone:null,
+                email:null
+            }
         }
         this.modalDeleteShow=this.modalDeleteShow.bind(this);
         this.modalDeleteHiden=this.modalDeleteHiden.bind(this);
@@ -27,6 +32,8 @@ class TableContacts extends Component{
         this.updateForm=this.updateForm.bind(this);
         this.modalCreateShow= this.modalCreateShow.bind(this);
         this.modalCreateHiden=this.modalCreateHiden.bind(this);
+        this.setFormValidate=this.setFormValidate.bind(this);
+        this.verifiForm=this.verifiForm.bind(this);
     }
 
     modalDeleteShow(data){
@@ -52,24 +59,43 @@ class TableContacts extends Component{
             name:data.name,
             phone:data.phone,
             email:data.email
+        },
+        formValidate:{
+            name:null,
+            phone:null,
+            email:null
         }});
     }
     modalUpdateHiden(save){
         if(save){
             const {editContacts} =this.props;
-            editContacts(this.state.form);
+            this.verifiForm(true, (result)=>{
+                if(result){
+                    this.setState({modalUpdateShow:false});
+                    editContacts(this.state.form);
+                }else{
+                    return false;
+                }
+            });
+        }else{
+            this.setState({modalUpdateShow:false});
         }
-        this.setState({modalUpdateShow:false});
     }
     updateForm(form){
         this.setState({form:form});
     }
     modalCreateShow(){
-        this.setState({modalCreateShow:true, modalData:{}, form:{
+        this.setState({modalCreateShow:true, modalData:{}, 
+        form:{
             id:'',
             name:'',
             phone:'',
             email:''
+        },
+        formValidate:{
+            name:null,
+            phone:null,
+            email:null
         }});
     }
     modalCreateHiden(save){
@@ -77,9 +103,32 @@ class TableContacts extends Component{
             const {createContacts} =this.props;
             const newContact= this.state.form;
             delete newContact.id;
-            createContacts(newContact);
-        } 
-        this.setState({modalCreateShow:false});
+            this.verifiForm(false, (result)=>{
+                if(result){
+                    this.setState({modalCreateShow:false});
+                    createContacts(newContact);
+                }else{
+                    return false;
+                }
+            });
+        }else{
+            this.setState({modalCreateShow:false});
+        }
+    }
+    setFormValidate(formValidate){
+        this.setState({formValidate:formValidate});
+    }
+
+    verifiForm(ignoraNull, callback){
+        const {formValidate} = this.state;
+        let result=true;
+        for(let name in formValidate){
+            if(formValidate[name]===false||(formValidate[name]===null&&!ignoraNull)){
+                result=false;
+                break;
+            }
+        }
+        callback(result);
     }
     
     render(){
@@ -114,7 +163,12 @@ class TableContacts extends Component{
                 type={"UPDATE"}
                 title={"Atualizar"}
                 subtitle={""}
-                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                message={<Formulario 
+                    formData={this.state.form} 
+                    setFormData={this.updateForm} 
+                    formValidate={this.state.formValidate}
+                    setFormValidate={this.setFormValidate}
+                    />}
                 show={this.state.modalUpdateShow}
                 onHide={this.modalUpdateHiden}
             />
@@ -122,7 +176,12 @@ class TableContacts extends Component{
                 type={"CREATE"}
                 title={"Criar contato"}
                 subtitle={""}
-                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                message={<Formulario 
+                    formData={this.state.form} 
+                    setFormData={this.updateForm} 
+                    formValidate={this.state.formValidate}
+                    setFormValidate={this.setFormValidate}
+                    />}
                 show={this.state.modalCreateShow}
                 onHide={this.modalCreateHiden}
             />
