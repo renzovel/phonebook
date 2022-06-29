@@ -61,6 +61,7 @@ function ContainerContact(props) {
   }
 
   const createContact = (data) => {
+    setLoadingInit(true);
     const newResquest = POST(URLs.postContacts, data);
     newResquest.then((data) => {
       loadContacts();
