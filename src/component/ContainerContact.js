@@ -10,6 +10,8 @@ import MenuLeft from './MenuLeft';
 function ContainerContact(props) {
   const { search } = props;
   const [list, setList] = useState([]);
+  const [loadingInit, setLoadingInit] = useState(true);
+
   const refContacts = useRef(null);
   const loadContacts = () => {
     const resquest = GET(URLs.contacts);
@@ -19,6 +21,7 @@ function ContainerContact(props) {
       } else {
         setList([]);
       }
+      setLoadingInit(false);
     });
   }
   useEffect(() => {
@@ -68,6 +71,9 @@ function ContainerContact(props) {
     <>
       <MenuLeft createContactShow={() => refContacts.current.modalCreateShow()} /> 
       <div className='ContainerContact'>
+        {loadingInit&&
+          <div className="loading"></div>
+        }
         <TableContacts 
           ref={refContacts} 
           editContacts={editContacts} 

@@ -224,6 +224,19 @@
 .MenuLeft{
   border-right: 1px solid #eee;
 }
+.loading{
+  width: 60px;
+  height: 60px;
+  border: 3px solid green;
+  margin: auto;
+  border-bottom-style: dashed;
+  border-left-color: #d3d30f;
+  border-top-color: blue;
+  border-right-color: transparent;
+  border-bottom-color: green;
+  border-radius: 100%;
+  animation: loading  infinite linear 0.5s;
+}
 
 @media (max-width:1024px){
   :root{
@@ -272,7 +285,7 @@
   }
 }
 
-@keyframes App-logo-spin {
+@keyframes loading {
   from {
     transform: rotate(0deg);
   }
