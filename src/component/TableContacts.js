@@ -97,7 +97,7 @@ class TableContacts extends Component{
             />
             <MyVerticallyCenteredModal
                 type={"READ"}
-                title={"Ver"}
+                title={""}
                 subtitle={null}
                 message={
                     <div style={{textAlign:'center'}}>
@@ -133,13 +133,13 @@ class TableContacts extends Component{
                     <div onClick={()=>{_this.modalReadShow(data)}} style={{cursor:'pointer'}}>
                         <img src={`https://ui-avatars.com/api/?background=random&name=${data.name}&color=FFFF`} alt={data.name} title={data.name} />
                     </div>
-                    <div>
+                    <div className='limit-tex capitalize' onClick={()=>{_this.modalReadShow(data)}} style={{maxWidth: '30%'}}>
                         {data.name}
                     </div>
-                    <div>
+                    <div className='limit-tex' onClick={()=>{_this.modalReadShow(data)}}>
                         {data.phone}
                     </div>
-                    <div>
+                    <div className='limit-tex lowercase' onClick={()=>{_this.modalReadShow(data)}}>
                         {data.email}
                     </div>
                     <div className='content-icon'>

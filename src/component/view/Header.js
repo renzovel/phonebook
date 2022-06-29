@@ -40,7 +40,7 @@ function Header(props){
                         />
                     </FloatingLabel>
                 </div>
-                <div className='logo-container' style={style.logoContainer}>
+                <div className='logo-container content-foto-user' style={style.logoContainer}>
                     <img src={LogoUser} alt='Phone Book' title='Phone Book'/>
                 </div>
             </div>

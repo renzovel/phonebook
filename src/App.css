@@ -8,6 +8,12 @@
 *{
   font-family: var(--fontFamilyOne);
 }
+.capitalize{
+  text-transform: capitalize;
+}
+.lowercase{
+  text-transform: lowercase;
+}
 .Main{
   position: relative;
 }
@@ -111,6 +117,12 @@
   flex-grow: 1;
   line-height: 65px;
 }
+.row-table .limit-tex{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
 .row-table div:nth-child(1){
   max-width: 100px;
   min-width: 90px;
@@ -124,7 +136,7 @@
 }
 .row-table div:last-child{
   max-width: 100px;
-  min-width: 80px;
+  min-width: 100px;
   text-align: right;
   padding-right: 10px;
 }
@@ -178,8 +190,8 @@
     bottom: 0;
     right: 0;
     font-size: 100px;
-    width: 70px;
-    height: 70px;
+    width: inherit;
+    height: inherit;
     color: #fff;
     line-height: 70px;
     user-select: none;
@@ -201,18 +213,63 @@
   border-top-color: blue;
   border-right-color: red;
   border-bottom-color: green;
-  color: purple;
+  color: green;
 }
 .btn-criar-contacts:hover,
 .btn-criar-contacts:active,
 .btn-criar-contacts:focus{
   background-color: transparent;
-  color: purple;
+  color: green;
+}
+.MenuLeft{
+  border-right: 1px solid #eee;
 }
 
+@media (max-width:1024px){
+  :root{
+    --minWidthCont: 150px;
+  }
+  .MenuLeft{
+    display: none;
+  }
+  .logo-container img{
+    font-size: 12px;
+  }
+  .logo-container span{
+    font-size: 12px;
+  }
+  .logo-container img{
+    max-width: 50px;
+    min-width: 50px;
+  }
+}
 
-
-@media (prefers-reduced-motion: no-preference) {
+@media (max-width:700px){
+  .btnInsertContact{
+    position: fixed;
+    right: 45%;
+    width: 60px;
+    height: 60px;
+  }
+  .btnInsertContact span{
+    font-size: 100px;
+    line-height: 60px;
+  }
+  .content-foto-user{
+    min-width: fit-content;
+  }
+  .row-table div{
+    font-size:smaller;
+  }
+  .row-table div:nth-child(1) > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 5px;
+  }
+  .row-table div:nth-child(1){
+    min-width: 70px;
+  }
 }
 
 @keyframes App-logo-spin {
