@@ -121,10 +121,15 @@
     },
     {
       "id": 17,
-      "idUser": 1,
       "name": "Leo Carregueiro Baldaia",
       "phone": "+55(92)000000000",
       "email": "leocarr@exemplo.com"
+    },
+    {
+      "id": 19,
+      "name": "Renzo Veliz",
+      "phone": "+55(92)000000000",
+      "email": "ruanlinares123@exemplo.co"
     }
   ]
 }
