@@ -92,7 +92,7 @@ export default function Formulario(props){
               onBlur={(e)=>validation(e, {
                 required:true,
                 min:4,
-                max:20,
+                max:40,
                 name:true
               })} />
               <Validation valid={props.formValidate.name} msgError="Nome errado!" />
