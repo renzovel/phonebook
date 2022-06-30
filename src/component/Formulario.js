@@ -52,7 +52,6 @@ export default function Formulario(props){
           return false;
       },
       name:(value, compare)=>{
-        console.log(value.split(" "));
         if((validator.isAlpha(value.replace(/ /g, ""),"pt-BR")===compare)
           &&value.split(" ").length<=4)
           return true;
