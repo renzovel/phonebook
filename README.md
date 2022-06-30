@@ -28,3 +28,25 @@ http://localhost:3000/
 ```
 http://localhost:3001/
 ```
+### References :
+
+* Para visualizar o projeto na nuvem (Deploy), siga a URL : [https://phone-book-2022.herokuapp.com/](https://phone-book-2022.herokuapp.com/)
+
+#### Layouts:
+
+> Versão para navegador Web :
+
+![Layout Web](public/References_Navegador.png?v=1)
+
+> Versão para dispositivos Móveis :
+
+![Layout Phone](public/References_Phone.jpeg?v=1)
+
+
+### License 
+
+Copyright © 2022, [Renzo Veliz](https://github.com/renzovel)
+
+***
+
+Create by, [Renzo Veliz](https://github.com/renzovel), All rights reserved.
