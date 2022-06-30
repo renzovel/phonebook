@@ -17,6 +17,11 @@ class TableContacts extends Component{
                 phone:'',
                 email:''
             }
+            ,formValidate:{
+                name:null,
+                phone:null,
+                email:null
+            }
         }
         this.modalDeleteShow=this.modalDeleteShow.bind(this);
         this.modalDeleteHiden=this.modalDeleteHiden.bind(this);
@@ -27,6 +32,8 @@ class TableContacts extends Component{
         this.updateForm=this.updateForm.bind(this);
         this.modalCreateShow= this.modalCreateShow.bind(this);
         this.modalCreateHiden=this.modalCreateHiden.bind(this);
+        this.setFormValidate=this.setFormValidate.bind(this);
+        this.verifiForm=this.verifiForm.bind(this);
     }
 
     modalDeleteShow(data){
@@ -52,24 +59,43 @@ class TableContacts extends Component{
             name:data.name,
             phone:data.phone,
             email:data.email
+        },
+        formValidate:{
+            name:null,
+            phone:null,
+            email:null
         }});
     }
     modalUpdateHiden(save){
         if(save){
             const {editContacts} =this.props;
-            editContacts(this.state.form);
+            this.verifiForm(true, (result)=>{
+                if(result){
+                    this.setState({modalUpdateShow:false});
+                    editContacts(this.state.form);
+                }else{
+                    return false;
+                }
+            });
+        }else{
+            this.setState({modalUpdateShow:false});
         }
-        this.setState({modalUpdateShow:false});
     }
     updateForm(form){
         this.setState({form:form});
     }
     modalCreateShow(){
-        this.setState({modalCreateShow:true, modalData:{}, form:{
+        this.setState({modalCreateShow:true, modalData:{}, 
+        form:{
             id:'',
             name:'',
             phone:'',
             email:''
+        },
+        formValidate:{
+            name:null,
+            phone:null,
+            email:null
         }});
     }
     modalCreateHiden(save){
@@ -77,9 +103,32 @@ class TableContacts extends Component{
             const {createContacts} =this.props;
             const newContact= this.state.form;
             delete newContact.id;
-            createContacts(newContact);
-        } 
-        this.setState({modalCreateShow:false});
+            this.verifiForm(false, (result)=>{
+                if(result){
+                    this.setState({modalCreateShow:false});
+                    createContacts(newContact);
+                }else{
+                    return false;
+                }
+            });
+        }else{
+            this.setState({modalCreateShow:false});
+        }
+    }
+    setFormValidate(formValidate){
+        this.setState({formValidate:formValidate});
+    }
+
+    verifiForm(ignoraNull, callback){
+        const {formValidate} = this.state;
+        let result=true;
+        for(let name in formValidate){
+            if(formValidate[name]===false||(formValidate[name]===null&&!ignoraNull)){
+                result=false;
+                break;
+            }
+        }
+        callback(result);
     }
     
     render(){
@@ -114,7 +163,12 @@ class TableContacts extends Component{
                 type={"UPDATE"}
                 title={"Atualizar"}
                 subtitle={""}
-                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                message={<Formulario 
+                    formData={this.state.form} 
+                    setFormData={this.updateForm} 
+                    formValidate={this.state.formValidate}
+                    setFormValidate={this.setFormValidate}
+                    />}
                 show={this.state.modalUpdateShow}
                 onHide={this.modalUpdateHiden}
             />
@@ -122,7 +176,12 @@ class TableContacts extends Component{
                 type={"CREATE"}
                 title={"Criar contato"}
                 subtitle={""}
-                message={<Formulario formData={this.state.form} setFormData={this.updateForm} />}
+                message={<Formulario 
+                    formData={this.state.form} 
+                    setFormData={this.updateForm} 
+                    formValidate={this.state.formValidate}
+                    setFormValidate={this.setFormValidate}
+                    />}
                 show={this.state.modalCreateShow}
                 onHide={this.modalCreateHiden}
             />
@@ -149,7 +208,7 @@ class TableContacts extends Component{
                             </svg>
                         </div>
                         <div className='icon-apagar'>
-                            <svg onClick={()=>{_this.modalDeleteShow(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+                            <svg onClick={(e)=>{_this.modalDeleteShow(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                 <path  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                             </svg>
